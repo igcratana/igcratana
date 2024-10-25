@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>គិតលុយថ្លៃតារាង</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>កម្មវិធីគណនាចំនួនលុយតារាងបាល់ទាត់</h1>
+    <input type="number" id="totalCost" placeholder="ចំនួនលុយ" />
+    <input type="number" id="numberOfPeople" placeholder="ចំនួនមនុស្ស" />
+    
+    <button onclick="calculateCostPerPerson()">ចុចដើម្បីទូទាត់</button>
+    
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateCostPerPerson() {
+            const totalCost = parseFloat(document.getElementById("totalCost").value);
+            const numberOfPeople = parseInt(document.getElementById("numberOfPeople").value);
+            
+            if (isNaN(totalCost) || totalCost <= 0) {
+                document.getElementById("result").innerText = "ចំនួនលុយថ្លៃតារាង";
+                return;
+            }
+
+            if (isNaN(numberOfPeople) || numberOfPeople <= 0) {
+                document.getElementById("result").innerText = "ចំនួនមនុស្ស";
+                return;
+            }
+
+            const costPerPerson = (totalCost / numberOfPeople).toFixed(2);
+            document.getElementById("result").innerText = `ចំនួនលុយត្រូវបង់ក្នុងម្នាក់: ${costPerPerson} `;
+        }
+    </script>
+</body>
+</html>
